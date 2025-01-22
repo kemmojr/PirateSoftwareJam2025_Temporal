@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://xbtkp1qi3akn"]
+
+[ext_resource type="PackedScene" uid="uid://ccqg5v6n6851q" path="res://player.tscn" id="1_nuyq0"]
+[ext_resource type="Texture2D" uid="uid://hfkxpmhm21wj" path="res://Tileset - Objects.png" id="2_mkc4i"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xbp3y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivao7"]
+texture = ExtResource("2_mkc4i")
+
+[sub_resource type="TileSet" id="TileSet_yr256"]
+sources/0 = SubResource("TileSetAtlasSource_ivao7")
+
+[node name="root" type="Node"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_nuyq0")]
+
+[node name="staticbody2d" type="StaticBody2D" parent="."]
+position = Vector2(12, 78)
+scale = Vector2(15.0203, -0.158666)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="staticbody2d"]
+process_physics_priority = 1
+shape = SubResource("WorldBoundaryShape2D_xbp3y")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="staticbody2d"]
+tile_set = SubResource("TileSet_yr256")
