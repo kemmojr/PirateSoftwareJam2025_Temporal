@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dct63gq0satmr"
-path="res://.godot/imported/Tileset - Structural.png-98d6f0d9002651605a604aa4246282dd.ctex"
+uid="uid://cc1k6rfmhlhda"
+path="res://.godot/imported/Animated Tileset - Laser Gate.png-a4d0182f2db985cf79536d165f1ac35e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tileset - Structural.png"
-dest_files=["res://.godot/imported/Tileset - Structural.png-98d6f0d9002651605a604aa4246282dd.ctex"]
+source_file="res://Assets/Animated Tileset - Laser Gate.png"
+dest_files=["res://.godot/imported/Animated Tileset - Laser Gate.png-a4d0182f2db985cf79536d165f1ac35e.ctex"]
 
 [params]
 
