@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://btkiw03tiqfm8"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_1wof0"]
+[ext_resource type="PackedScene" uid="uid://co6h71xm4qp0a" path="res://Scenes/killzone.tscn" id="1_52k55"]
+[ext_resource type="Texture2D" uid="uid://c5oo4pu8k5fwi" path="res://Assets/Tileset1.1/Tileset - Objects.png" id="2_1xw3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gscab"]
+size = Vector2(4, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82dmr"]
+atlas = ExtResource("2_1xw3l")
+region = Rect2(176, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdbgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82dmr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_1wof0")
+
+[node name="Killzone" parent="." instance=ExtResource("1_52k55")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+scale = Vector2(3.905, 3.905)
+shape = SubResource("RectangleShape2D_gscab")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vdbgc")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://caapa6p80eydk"]
+
+[ext_resource type="Script" path="res://scripts/turret.gd" id="1_oitlh"]
+[ext_resource type="Texture2D" uid="uid://c5oo4pu8k5fwi" path="res://Assets/Tileset1.1/Tileset - Objects.png" id="2_a24wu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o51hf"]
+atlas = ExtResource("2_a24wu")
+region = Rect2(176, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvdoj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o51hf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3fkf"]
+atlas = ExtResource("2_a24wu")
+region = Rect2(226, 143, 13, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpr72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3fkf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dit6n"]
+radius = 88.5268
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_oitlh")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.34902, 1, 1, 0.4)
+polygon = PackedVector2Array(-89, 0, -86, 23, -77, 44, -63, 62, -44, 77, -23, 86, 0, 89, 23, 86, 45, 77, 63, 63, 77, 44, 86, 23, 89, 0, 86, -23, 77, -45, 63, -63, 45, -77, 23, -86, 0, -89, -23, -86, -45, -77, -63, -63, -77, -45, -86, -23)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uvdoj")
+
+[node name="Barrel" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.15, -0.08)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_gpr72")
+offset = Vector2(0.285, 8.68)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_dit6n")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(0, 13)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D"]
+position = Vector2(0, 13.055)
+scale = Vector2(0.02, 0.02)
+color = Color(0.226167, 0.23, 0.2185, 1)
+polygon = PackedVector2Array(-89, 0, -86, 23, -77, 44, -63, 62, -44, 77, -23, 86, 0, 89, 23, 86, 45, 77, 63, 63, 77, 44, 86, 23, 89, 0, 86, -23, 77, -45, 63, -63, 45, -77, 23, -86, 0, -89, -23, -86, -45, -77, -63, -63, -77, -45, -86, -23)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

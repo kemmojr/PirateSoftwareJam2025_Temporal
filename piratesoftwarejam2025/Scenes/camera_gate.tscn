@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnhl8h0jc2rew"]
+
+[ext_resource type="Texture2D" uid="uid://cpp4qyaf3k4en" path="res://Assets/Animated Tileset/Animated Tileset - Camera Gate.png" id="1_iyawk"]
+[ext_resource type="Script" path="res://scripts/camera_gate.gd" id="1_wxr2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3agkf"]
+atlas = ExtResource("1_iyawk")
+region = Rect2(0, 15, 19, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6qhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3agkf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_e0xlu"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiwhv"]
+size = Vector2(7, 33)
+
+[node name="CameraGate" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_wxr2m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -15.555)
+sprite_frames = SubResource("SpriteFrames_j6qhv")
+script = SubResource("GDScript_e0xlu")
+
+[node name="CameraVisual" type="Polygon2D" parent="."]
+color = Color(0.34902, 1, 1, 0.4)
+polygon = PackedVector2Array(8, -26, 2, 1, 73, 1, 10, -28)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(-3, -15.5)
+shape = SubResource("RectangleShape2D_aiwhv")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+position = Vector2(0.44, 33)
+color = Color(0.898039, 0, 0, 0.2)
+polygon = PackedVector2Array(0, -32, -7, -32, -7, -65, 0, -65)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -10)
+polygon = PackedVector2Array(74, 11, 0, 11, 0, -22, 10.0147, -17.534)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
