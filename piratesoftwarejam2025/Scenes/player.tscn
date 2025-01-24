@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccqg5v6n6851q"]
+
+[ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_2nvis"]
+[ext_resource type="Texture2D" uid="uid://rb2ryksv7x03" path="res://Assets/Animated Tileset - Player.png" id="2_v0bby"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djyns"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gm2kt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v0bby")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -10)
+script = ExtResource("1_2nvis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_djyns")
+debug_color = Color(0.753221, 0.457376, 0, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gm2kt")

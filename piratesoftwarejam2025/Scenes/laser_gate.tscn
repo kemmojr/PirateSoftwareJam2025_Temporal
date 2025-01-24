@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://3c15nkulmo4p"]
+
+[ext_resource type="PackedScene" uid="uid://co6h71xm4qp0a" path="res://Scenes/killzone.tscn" id="1_67231"]
+[ext_resource type="Texture2D" uid="uid://brwhb7gyix5xl" path="res://Assets/Animated Tileset/Animated Tileset - Laser Gate.png" id="2_kit6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr2le"]
+atlas = ExtResource("2_kit6b")
+region = Rect2(0, 16, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf2dl"]
+atlas = ExtResource("2_kit6b")
+region = Rect2(29, 16, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqalh"]
+atlas = ExtResource("2_kit6b")
+region = Rect2(58, 16, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30hqx"]
+atlas = ExtResource("2_kit6b")
+region = Rect2(87, 16, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2n2o"]
+atlas = ExtResource("2_kit6b")
+region = Rect2(116, 16, 29, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rw66d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr2le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf2dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqalh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30hqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2n2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87xkk"]
+size = Vector2(14, 28)
+
+[node name="LaserGate" instance=ExtResource("1_67231")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(-2.5, -16)
+sprite_frames = SubResource("SpriteFrames_rw66d")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0.5, -14)
+shape = SubResource("RectangleShape2D_87xkk")
