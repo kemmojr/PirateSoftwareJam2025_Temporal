@@ -18,7 +18,6 @@ func _process(delta):
 			fire()
 		else:
 			counter += 1
-	pass
 
 func _on_area_2d_body_entered(body):
 	newBody = body
@@ -28,7 +27,6 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.has_method("player"):
 		bodyEntered = false
-	
 
 func fire():
 	counter = 0
@@ -37,13 +35,11 @@ func fire():
 	
 	 
 	#newBody.position * bulletSpeed
-	var bulletInstance = bulletPath.instantiate()
-	add_child(bulletInstance)
-	bulletInstance.position = marker_2d.position
+	var bullet = bulletPath.instantiate()
+	add_child(bullet)
+	bullet.global_position = marker_2d.global_position
+	bullet.velocity = newBody.global_position - bullet.global_position
+
 	# rotate the starting position to be looking at the player
 	node_2d.look_at(newBody.position)
 	node_2d.rotate(3*TAU/4)
-	bulletInstance.velocity = newBody.position - bulletInstance.position
-	#bulletInstance.velocity.x = move_toward(newBody.position.x, 0, bulletSpeed)
-	#bulletInstance.velocity.y = move_toward(newBody.position.y, 0, bulletSpeed)  
-	#bulletInstance.move_and_slide()

@@ -1,32 +1,32 @@
 [gd_scene load_steps=8 format=3 uid="uid://caapa6p80eydk"]
 
 [ext_resource type="Script" path="res://scripts/turret.gd" id="1_oitlh"]
-[ext_resource type="Texture2D" uid="uid://c5oo4pu8k5fwi" path="res://Assets/Tileset1.1/Tileset - Objects.png" id="2_a24wu"]
+[ext_resource type="Texture2D" uid="uid://bh603q4jnt5pw" path="res://Assets/Turret_Tileset.png" id="2_en7wx"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o51hf"]
-atlas = ExtResource("2_a24wu")
-region = Rect2(176, 112, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xl1j"]
+atlas = ExtResource("2_en7wx")
+region = Rect2(32, 16, 16, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvdoj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o51hf")
+"texture": SubResource("AtlasTexture_0xl1j")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3fkf"]
-atlas = ExtResource("2_a24wu")
-region = Rect2(226, 143, 13, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t35y"]
+atlas = ExtResource("2_en7wx")
+region = Rect2(32, 0, 22, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gpr72"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l3fkf")
+"texture": SubResource("AtlasTexture_3t35y")
 }],
 "loop": true,
 "name": &"default",
@@ -44,13 +44,17 @@ color = Color(0.34902, 1, 1, 0.4)
 polygon = PackedVector2Array(-89, 0, -86, 23, -77, 44, -63, 62, -44, 77, -23, 86, 0, 89, 23, 86, 45, 77, 63, 63, 77, 44, 86, 23, 89, 0, 86, -23, 77, -45, 63, -63, 45, -77, 23, -86, 0, -89, -23, -86, -45, -77, -63, -63, -77, -45, -86, -23)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_uvdoj")
 
-[node name="Barrel" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.15, -0.08)
-scale = Vector2(0.5, 0.5)
+[node name="Barrel" type="Node2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.02974
+
+[node name="Barrel2" type="AnimatedSprite2D" parent="Barrel"]
+position = Vector2(-0.00737715, 11.6619)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_gpr72")
-offset = Vector2(0.285, 8.68)
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://btkiw03tiqfm8"]
 
-[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_1wof0"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_1wof0"]
 [ext_resource type="PackedScene" uid="uid://co6h71xm4qp0a" path="res://Scenes/killzone.tscn" id="1_52k55"]
 [ext_resource type="Texture2D" uid="uid://c5oo4pu8k5fwi" path="res://Assets/Tileset1.1/Tileset - Objects.png" id="2_1xw3l"]
 
@@ -23,6 +23,8 @@ animations = [{
 }]
 
 [node name="Bullet" type="CharacterBody2D"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_1wof0")
 
 [node name="Killzone" parent="." instance=ExtResource("1_52k55")]
