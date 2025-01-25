@@ -5,7 +5,7 @@ extends CharacterBody2D
 var alive = true
 const SPEED = 200
 const JUMP_VELOCITY = -300.0
-
+const dashDistance = 40
 
 func _physics_process(delta: float) -> void:
 	# Add gravity.
@@ -19,6 +19,9 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("move_left", "move_right")
 		move(direction)
 		flip(direction)
+		if Input.is_action_just_pressed("dash"):
+			dash(direction)
+			
 	elif alive == false:
 		velocity.x = 0
 		animated_sprite.modulate = Color(1,0.33,0.33,1)
@@ -39,3 +42,5 @@ func flip(direction):
 	elif direction > 0:
 		animated_sprite.flip_h = false
 		
+func dash(direction):
+	position.x += dashDistance * direction

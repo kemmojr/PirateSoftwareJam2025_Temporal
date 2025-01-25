@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_1wof0"]
 [ext_resource type="PackedScene" uid="uid://co6h71xm4qp0a" path="res://Scenes/killzone.tscn" id="1_52k55"]
-[ext_resource type="Texture2D" uid="uid://c5oo4pu8k5fwi" path="res://Assets/Tileset1.1/Tileset - Objects.png" id="2_1xw3l"]
+[ext_resource type="Texture2D" uid="uid://bh603q4jnt5pw" path="res://Assets/Turret_Tileset.png" id="3_ab3kp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gscab"]
-size = Vector2(4, 2)
+size = Vector2(2.04865, 0.640342)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82dmr"]
-atlas = ExtResource("2_1xw3l")
-region = Rect2(176, 96, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sidqk"]
+atlas = ExtResource("3_ab3kp")
+region = Rect2(64, 112, 5, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vdbgc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82dmr")
+"texture": SubResource("AtlasTexture_sidqk")
 }],
 "loop": true,
 "name": &"default",
@@ -30,8 +30,11 @@ script = ExtResource("1_1wof0")
 [node name="Killzone" parent="." instance=ExtResource("1_52k55")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-scale = Vector2(3.905, 3.905)
+rotation = 1.5708
+scale = Vector2(4.86, 2.96)
 shape = SubResource("RectangleShape2D_gscab")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_vdbgc")
