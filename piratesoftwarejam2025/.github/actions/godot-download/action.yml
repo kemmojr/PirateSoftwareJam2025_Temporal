@@ -3,7 +3,7 @@ description: Download and extract the Godot source code for use in compiling
 inputs:
   version:
     description: Version of Godot source code to download
-    default: "3.5-stable"
+    default: "4.3-stable"
 runs:
   using: "composite"
   steps:
